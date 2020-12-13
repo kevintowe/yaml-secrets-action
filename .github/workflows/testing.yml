@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: kevintowe/yaml-secrets-action
+      uses: kevintowe/yaml-secrets-action@v1
       with:
         who-to-greet: 'Billy Smithers'
     # Use the output from the `hello` step
