@@ -1,5 +1,11 @@
-FROM alpine:3.10
+FROM golang:1.13-alpine as builder
 
-COPY entrypoint.sh /entrypoint.sh
+# building app
+WORKDIR /go/src/app
+ADD . /go/src/app
+RUN go mod download
+RUN go build -o /go/bin/app main.go
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+FROM alpine
+COPY --from=builder /go/bin/app /
+ENTRYPOINT ["/app"]

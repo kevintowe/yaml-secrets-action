@@ -16,11 +16,12 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
+      - name: Testing testing testing
         id: hello
         uses: ./
-        with:
-          who-to-greet: "Billy Smithers"
+        env:
+          TESTING_SECRET_1: ${{ secrets.TESTING_SECRET_1 }}
+          TESTING_SECRET_3: ${{ secrets.TESTING_SECRET_34 }}
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
