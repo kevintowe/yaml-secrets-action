@@ -1,0 +1,28 @@
+name: "Yaml Secrets"
+# description: "Transcribe specified secrets from `github secrets` onto the specified app.yaml file"
+description: "Greet someone and record the time"
+inputs:
+  who-to-greet: # id of input
+    description: "Who to greet"
+    required: true
+    default: "World"
+outputs:
+  time: # id of output
+    description: "The time we greeted you"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.who-to-greet }}
+# inputs:
+#   secrets: # id of input
+#     description: "Secrets to Transcribe"
+#     required: true
+# outputs:
+#   message: # id of output
+#     description: "Status of the action"
+# runs:
+#   using: "docker"
+#   image: "Dockerfile"
+#   args:
+#     - ${{ inputs.secrets }}
